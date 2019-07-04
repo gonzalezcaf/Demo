@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "RN_2"
+	dialect "mvel"
+	enabled false
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "INDEFINIDO" && categoria_contrato == "CAT1" && respuesta_cr not in ( 0, 4, 7 ) && score < 150 )
+		res : respuesta( )
+	then
+		res.setResultado( "NEGADO" );
+		System.out.println("Regla " + drools.getRule().getName() + " ejecutada");
+end

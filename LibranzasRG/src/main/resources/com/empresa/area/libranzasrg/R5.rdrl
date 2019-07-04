@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "R5"
+	dialect "mvel"
+	enabled false
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "FIJO" && categoria_contrato == "CAT3" && respuesta_cr not in ( 0, 4, 7 ) && score >= 686 )
+		res : respuesta( )
+	then
+		res.setResultado( "APROBADO" );
+		System.out.println("Regla " + drools.getRule().getName() + " ejecutada");
+end

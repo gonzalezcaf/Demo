@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "RN_13"
+	dialect "mvel"
+	enabled false
+	agenda-group "G2"
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "INDEFINIDO" && respuesta_cr in ( 0, 4, 7 ) && smmlv < 2 )
+		res : respuesta( )
+	then
+		res.setResultado( "NEGADO" );
+end

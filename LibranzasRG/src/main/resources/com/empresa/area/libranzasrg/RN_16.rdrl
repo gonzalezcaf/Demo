@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "RN_16"
+	dialect "mvel"
+	enabled false
+	agenda-group "G2"
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "PENSIONADO" && smmlv >= 0.5 && causa_pension == "TIEMPO LABORAL" && ( edad < 40 || edad > 85 ))
+		res : respuesta( )
+	then
+		res.setResultado( "NEGADO" );
+end

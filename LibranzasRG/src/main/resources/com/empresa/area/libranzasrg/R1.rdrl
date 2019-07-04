@@ -1,0 +1,16 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "R1"
+	dialect "mvel"
+	enabled true
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "INDEFINIDO" && categoria_contrato == "CAT1" && respuesta_cr in ( 0, 4, 7 ) )
+		res : respuesta( )
+	then
+		res.setResultado( "APROBADOR1" );
+		System.out.println("Regla " + drools.getRule().getName() + " ejecutada");
+		drools.setFocus("G2");
+end

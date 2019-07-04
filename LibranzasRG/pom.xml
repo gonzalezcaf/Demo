@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.empresa.area./groupId>
+  <artifactId>LibranzasRG</artifactId>
+  <version>2.5.2</version>
+  <packaging>kjar</packaging>
+  <name>LibranzasRG</name>
+  <description>Reglas generales (RG) de libranza</description>
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>qaartifactory-releases</name>
+      <url>http://jfrogqa:8081/artifactory/BRMS</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>qaartifactory-snapshots</name>
+      <url>http://jfrogqa:8081/artifactory/BRMS</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <repositories>
+    <repository>
+      <id>guvnor-m2-repo</id>
+      <name>Guvnor M2 Repo</name>
+      <url>https://brmsdev.pichincha.local/business-central/maven2/</url>
+    </repository>
+  </repositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>6.5.0.Final-redhat-25</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

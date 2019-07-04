@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "R18"
+	dialect "mvel"
+	enabled false
+	agenda-group "G2"
+	when
+		emp : empresa( tipo == "PRIVADA" )
+		cli : cliente( modalidad_contrato == "INDEFINIDO" && respuesta_cr not in ( 0, 4, 7 ) && smmlv >= 1 && ( edad >= 18 && edad <= 75 ))
+		res : respuesta( )
+	then
+		res.setResultado( "APROBADO" );
+end

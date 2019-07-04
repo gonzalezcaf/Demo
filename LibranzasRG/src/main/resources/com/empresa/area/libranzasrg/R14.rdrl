@@ -1,0 +1,15 @@
+package com.empresa.area.libranzasrg;
+
+import java.lang.Number;
+
+rule "R14"
+	dialect "mvel"
+	enabled false
+	agenda-group "G2"
+	when
+		emp : empresa( tipo == "PUBLICA" )
+		cli : cliente( modalidad_contrato == "FIJO" && smmlv >= 3 && ( edad >= 18 && edad <= 75 ))
+		res : respuesta( )
+	then
+		res.setResultado( "APROBADO" );
+end
